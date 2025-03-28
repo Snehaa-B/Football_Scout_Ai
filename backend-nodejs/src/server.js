@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import playerProfileRoutes from './routes/playerProfileRoutes.js';
 import uploadedVideoRoutes from './routes/uploadedVideoRoutes.js';
-import performanceMetricsRoutes from './routes/performanceMetricsRoutes.js';
+// import performanceMetricsRoutes from './routes/performanceMetricsRoutes.js';
+import { setupRoutes } from './controllers/PerformanceMetricsService.js';
 import scoutReportRoutes from './routes/scoutReportRoutes.js';
 
 dotenv.config();
@@ -20,8 +21,9 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/player', playerProfileRoutes);
 app.use('/api/videos', uploadedVideoRoutes);
-app.use('/api/performance', performanceMetricsRoutes);
+// app.use('/api/performance', performanceMetricsRoutes);
 app.use('/api/scouts', scoutReportRoutes);
+setupRoutes(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World');

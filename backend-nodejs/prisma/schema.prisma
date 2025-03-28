@@ -97,7 +97,6 @@ model PerformanceMetrics {
   dribbling     Float
   passing       Float
   shooting      Float
-  defending     Float
   agility       Float
   stamina       Float
   intelligence  Float

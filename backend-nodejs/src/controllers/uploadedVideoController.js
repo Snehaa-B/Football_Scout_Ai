@@ -9,8 +9,13 @@ export const uploadVideo = async (req, res) => {
     if (!videoUrl) {
       return res.status(400).json({ error: 'videoUrl is required' });
     }
-
     // Most basic possible upload - no playerProfileId at all
+    const playerProfile = await prisma.playerProfile.findUnique({
+      where: { id: playerProfileId }
+    });
+    if (!playerProfile) {
+      return res.status(400).json({ error: "Player profile does not exist." });
+    }
     const uploadedVideo = await prisma.uploadedVideo.create({
       data: {
         userId: req.user.uid,

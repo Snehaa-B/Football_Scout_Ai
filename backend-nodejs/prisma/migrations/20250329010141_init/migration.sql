@@ -1,17 +1,8 @@
-/*
-  Warnings:
-
-  - You are about to drop the `PlayerReport` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- CreateEnum
 CREATE TYPE "UserRole" AS ENUM ('PLAYER', 'SCOUT');
 
 -- CreateEnum
 CREATE TYPE "VideoStatus" AS ENUM ('PENDING', 'PROCESSING', 'ANALYZED');
-
--- DropTable
-DROP TABLE "PlayerReport";
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -79,7 +70,6 @@ CREATE TABLE "PerformanceMetrics" (
     "dribbling" DOUBLE PRECISION NOT NULL,
     "passing" DOUBLE PRECISION NOT NULL,
     "shooting" DOUBLE PRECISION NOT NULL,
-    "defending" DOUBLE PRECISION NOT NULL,
     "agility" DOUBLE PRECISION NOT NULL,
     "stamina" DOUBLE PRECISION NOT NULL,
     "intelligence" DOUBLE PRECISION NOT NULL,

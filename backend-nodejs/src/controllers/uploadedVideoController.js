@@ -14,6 +14,14 @@ export const uploadVideo = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
+    const playerProfile = await prisma.playerProfile.findUnique({
+      where: { id: playerProfileId }
+    });
+
+    if (!playerProfile) {
+      return res.status(400).json({ error: "Player profile does not exist." });
+    }
+
     const uploadedVideo = await prisma.uploadedVideo.create({
       data: {
         userId: user.id,
